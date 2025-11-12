@@ -73,9 +73,9 @@ print(res['call_price_BS'], res['put_price_BS'])
 
 ```
 
-```
+## Simulation Output:
 
-Simulation Output:
+```
 
 Sample mean of S_T: 104.888903
 Sample std of S_T: 21.058641
