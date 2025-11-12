@@ -40,13 +40,14 @@ $$C_0 = e^{-rT} \cdot \mathbb{E}[C_T], \quad P_0 = e^{-rT} \cdot \mathbb{E}[P_T]
 Where $K$ is the strike price.
 
 ### 1.3 Black-Scholes Analytical Formulas
-The Black-Scholes formulas are used for validation:
-$$\begin{aligned}
-d_1 &= \frac{\ln(S_0/K) + (r + 0.5 \sigma^2)T}{\sigma \sqrt{T}} \\
-d_2 &= d_1 - \sigma \sqrt{T} \\
-C_0 &= S_0 N(d_1) - K e^{-rT} N(d_2) \\
-P_0 &= K e^{-rT} N(-d_2) - S_0 N(-d_1)
-\end{aligned}$$
+
+$$d_1 = \frac{\ln(S_0/K) + (r + 0.5 \sigma^2)T}{\sigma \sqrt{T}}$$
+
+$$d_2 = d_1 - \sigma \sqrt{T}$$
+
+$$C_0 = S_0 N(d_1) - K e^{-rT} N(d_2)$$
+
+$$P_0 = K e^{-rT} N(-d_2) - S_0 N(-d_1)$$
 
 Where $N(\cdot)$ is the standard normal cumulative distribution function.
 
@@ -60,13 +61,16 @@ Run the simulation:
 from monte_carlo import monte_carlo_gbm, compare_volatilities
 
 res = monte_carlo_gbm(S0=100, K=105, r=0.05, sigma=0.2, T=1, N=10000, seed=12345)
+```
 
 View the Monte Carlo results:
+
 print(res['mean_ST'], res['std_ST'])
 print(res['call_price_MC'], res['put_price_MC'])
 print(res['call_price_BS'], res['put_price_BS'])
 
 Simulation Output:
+
 Sample mean of S_T: 104.888903
 Sample std of S_T: 21.058641
 Call price (MC): 7.907570
@@ -75,18 +79,21 @@ Black-Scholes analytic comparison:
 Call (BS): 8.021352
 Put (BS): 7.900442
 
-Interpretation
+## Interpretation
+
 The sample mean of $\mathbf{S_T}$ is 104.89, which is very close to the theoretical expected price $\mathbf{S_0 e^{rT} \approx 105.13}$. 
 This confirms the simulation is accurate and unbiased.The standard deviation of 21.06 shows the spread of possible future stock prices.Monte Carlo call and put prices match closely with the Black-Scholes prices, validating the simulation methodology.
 
-Histogram Summary
+## Histogram Summary
 
 Single Histogram ($\sigma=20\%$)
-![Single histogram](histogram.png)
+![Single histogram](images\histogram.png)
 The plot shows a lognormal right-skewed distribution. Most simulated prices cluster around 90–115, with a long right tail providing the potential upside for call options. The mean is clearly marked.
 
-Overlayed Histograms ($\sigma=10\%, 20\%, 30\%$)
-![Overlaid histogram](overlaid_histogram.png)
+### 1. Overlayed Histograms ($\sigma=10\%, 20\%, 30\%$)
+
+![Overlaid histogram](images\overlaid_histogram.png)
+
 The overlaid plots show that higher volatility increases the spread of the stock price distribution, resulting in fatter tails. This increased chance of extreme outcomes (high or low) raises the value of both call and put options. The mean remains consistent across all volatilities, which is consistent with the risk-neutral expectation.
 
 
