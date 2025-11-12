@@ -65,9 +65,15 @@ res = monte_carlo_gbm(S0=100, K=105, r=0.05, sigma=0.2, T=1, N=10000, seed=12345
 
 View the Monte Carlo results:
 
+```python
+
 print(res['mean_ST'], res['std_ST'])
 print(res['call_price_MC'], res['put_price_MC'])
 print(res['call_price_BS'], res['put_price_BS'])
+
+```
+
+```
 
 Simulation Output:
 
@@ -79,6 +85,8 @@ Black-Scholes analytic comparison:
 Call (BS): 8.021352
 Put (BS): 7.900442
 
+```
+
 ## Interpretation
 
 The sample mean of $\mathbf{S_T}$ is 104.89, which is very close to the theoretical expected price $\mathbf{S_0 e^{rT} \approx 105.13}$. 
@@ -87,7 +95,7 @@ This confirms the simulation is accurate and unbiased.The standard deviation of 
 ### Histogram Summary
 
 Single Histogram ($\sigma=20\%$)
-![Single histogram](images\histogram.png)
+![Single histogram](images/histogram.png)
 
 This is a histogram of 10,000 simulated terminal stock prices S_T using GBM with sigma = 20% and T = 1 year.
 
@@ -95,7 +103,7 @@ The plot shows a lognormal right-skewed distribution. Most simulated prices clus
 
 ###  Overlayed Histograms ($\sigma=10\%, 20\%, 30\%$)
 
-![Overlaid histogram](images\overlaid_histogram.png)
+![Overlaid histogram](images/overlaid_histogram.png)
 
 The plot overlays the estimated density of terminal stock prices S_T (N = 10,000) for three volatilities (10%, 20%, 30%). Each colored histogram is the distribution of S_T produced by GBM simulation for that sigma.
 
