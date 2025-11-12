@@ -97,15 +97,15 @@ This confirms the simulation is accurate and unbiased.The standard deviation of 
 Single Histogram ($\sigma=20\%$)
 ![Single histogram](images/histogram.png)
 
-This is a histogram of 10,000 simulated terminal stock prices S_T using GBM with sigma = 20% and T = 1 year.
+This is a histogram of 10,000 simulated stock prices after 1 year using GBM with sigma = 20% and T = 1 year.
 
 The plot shows a lognormal right-skewed distribution. Most simulated prices cluster around 90–115, with a long right tail providing the potential upside for call options. The mean is clearly marked.
 
-###  Overlayed Histograms ($\sigma=10\%, 20\%, 30\%$)
+### Overlayed Histograms ($\sigma=10\%, 20\%, 30\%$)
 
 ![Overlaid histogram](images/overlaid_histogram.png)
 
-The plot overlays the estimated density of terminal stock prices S_T (N = 10,000) for three volatilities (10%, 20%, 30%). Each colored histogram is the distribution of S_T produced by GBM simulation for that sigma.
+The plot overlays the estimated density of stock prices after 1 year (N = 10,000) for three volatilities (10%, 20%, 30%). Each colored histogram shows the distribution of simulated prices for that sigma.
 
 The overlaid plots show that higher volatility increases the spread of the stock price distribution, resulting in fatter tails. This increased chance of extreme outcomes (high or low) raises the value of both call and put options. The mean remains consistent across all volatilities, which is consistent with the risk-neutral expectation.
 
